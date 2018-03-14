@@ -7,8 +7,8 @@ export const fetchPhotos = (input) => ({
     payload: {
         url: Constants.getSearchUrl(input),
         method: 'GET',
-        success: (photos) => {
-            return setPhotos(photos)
+        success: (data) => {
+            return setPhotos(data)
         },
         failure: (err) => {
             if(!err.status) {

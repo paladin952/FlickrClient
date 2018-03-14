@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from "react-native";
+import {FlatList, Text, View} from "react-native";
 import {connect} from "react-redux";
 import * as uiActions from "../../redux/actions/ui";
 import SearchBar from 'react-native-searchbar';
@@ -13,7 +13,7 @@ class MainPage extends React.Component {
     handleChangeText = (input) => {
         console.log("luci", input);
         this.props.onSearch(input);
-    }
+    };
 
     render() {
         return (
@@ -24,7 +24,20 @@ class MainPage extends React.Component {
                     hideBack
                 />
 
-                <Text>{JSON.stringify(this.props.photos)}</Text>
+                <FlatList
+                    style={{flex: 1, marginTop: 100}}
+                    data={this.props.photos}
+                    renderItem={(item) => {
+                        return <View style={{borderBottomColor: 'black', borderBottomWidth: 1, height: 100}}>
+                            <Text>here->{item.item["id"]}</Text>
+                        </View>
+                    }}
+                    keyExtractor={(item, index) => {
+                        return index;
+                    }}
+
+                />
+                {/*<Text>{JSON.stringify(this.props.photos)}</Text>*/}
             </View>
         )
     }
