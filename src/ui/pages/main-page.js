@@ -1,11 +1,9 @@
 import React from 'react';
-import {FlatList, ImageBackground, Text, View, StyleSheet, Dimensions} from "react-native";
+import {FlatList, ImageBackground, Text, View} from "react-native";
 import {connect} from "react-redux";
 import * as uiActions from "../../redux/actions/ui";
 import SearchBar from 'react-native-searchbar';
 import * as Constants from "../../utils/constants";
-
-let deviceWidth = Dimensions.get('window').width
 
 class MainPage extends React.Component {
 
@@ -22,30 +20,20 @@ class MainPage extends React.Component {
         return (
             <View style={{flex: 1}}>
                 <SearchBar
-                    style={{flex: 1, flexDirection: 'row'}}
                     handleChangeText={this.handleChangeText}
                     showOnLoad
                     hideBack
                 />
 
                 <FlatList
-                    contentContainerStyle={styles.list}
+                    style={{flex: 1, marginTop: 100}}
                     data={this.props.photos}
                     renderItem={(item) => {
-                        return <View style={{
-                            flex: 1,
-                            width: deviceWidth / 2 - 8,
-                            margin: 4,
-                            height: 304,
-                            maxHeight: 304,
-                            backgroundColor: '#CCC',
-                        }}>
+                        return <View style={{borderBottomColor: 'black', borderBottomWidth: 1, height: 100}}>
                             <ImageBackground
-                                style={{width: '100%', height: '100%'}}
+                                style={{width: '100%', height: 300}}
                                 source={{uri: Constants.getPhotoUrl(item.item)}}
                             />
-
-                            <Text>here->{item.item["id"]}</Text>
                         </View>
                     }}
                     keyExtractor={(item, index) => {
@@ -58,15 +46,6 @@ class MainPage extends React.Component {
     }
 
 }
-
-const styles = StyleSheet.create({
-    list: {
-        justifyContent: 'center',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    }
-});
-
 
 const mapStateToProps = state => {
     return {
