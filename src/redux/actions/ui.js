@@ -1,5 +1,3 @@
-
-
 import * as actions from "../consts/action-types";
 
 export const startNetwork = () => ({
@@ -24,4 +22,18 @@ export const showNetworkError = () => ({
 
 export const hideNetworkError = () => ({
     type: actions.HIDE_NETWORK_ERROR,
+});
+
+export const onMount = (page) => ({
+    type: actions.PAGE_MOUNTED,
+    payload: page
+});
+
+export const onSearch = (input) => ({
+    type: actions.ON_SEARCH,
+    payload: input,
+    meta: {
+        debounce: 500
+    }
+
 });

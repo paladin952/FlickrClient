@@ -18,7 +18,6 @@ const api = ({dispatch, getState}) => next => action => {
         method: method,
         data: data
     })
-        .then(response => response.data.results)
         .then(data => {
             dispatch(success(data));
             dispatch(endNetwork());

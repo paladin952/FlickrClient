@@ -26,7 +26,6 @@ const uiReducer = (state = initialState, action) => {
         case actions.HIDE_NETWORK_ERROR:
             return {...state, networkError: false};
 
-
         default:
             return state;
     }

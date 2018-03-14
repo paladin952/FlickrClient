@@ -17,6 +17,8 @@ const StackNav = StackNavigator({
     MainPage: {
         screen: MainPage
     },
+}, {
+    headerMode: 'none'
 });
 
 
