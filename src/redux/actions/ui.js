@@ -41,7 +41,7 @@ export const onSearch = (input) => ({
     type: actions.ON_SEARCH,
     payload: input,
     meta: {
-        debounce: 500
+        takeLast: 500 //take last input from the last 0.5 seconds. Reset the time if new event fired
     }
 });
 

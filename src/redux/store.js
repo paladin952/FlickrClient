@@ -5,6 +5,7 @@ import data from "./reducers/data";
 import multi from "./middleswares/multi";
 import uiMiddleware from "./middleswares/ui";
 import logger from "./middleswares/logger";
+import takeLast from "./middleswares/take-last";
 
 
 const store = createStore(
@@ -14,9 +15,10 @@ const store = createStore(
     }), compose(
         applyMiddleware(
             logger,
+            takeLast,
             api,
             multi,
-            uiMiddleware
+            uiMiddleware,
         )
     )
 );
