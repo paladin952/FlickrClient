@@ -8,7 +8,8 @@ import PhotosTabRoute from '../components/photos-tab'
 import PeopleTab from '../components/people-tab'
 import GroupTab from '../components/group-tab'
 import Strings from '../../utils/strings'
-import { Header } from 'react-navigation';
+import {Header} from 'react-navigation';
+import colors from "../../utils/colors";
 
 const initialLayout = {
     height: 0,
@@ -41,7 +42,7 @@ class MainPage extends React.Component {
         this.props.onTabChanged(index);
     };
 
-    renderHeader = props => <TabBar {...props} />;
+    renderHeader = props => <TabBar style={{backgroundColor: colors.blue_bar}}{...props} />;
 
     renderScene = SceneMap({
         first: PhotosTabRoute,
@@ -53,10 +54,13 @@ class MainPage extends React.Component {
         return (
             <View style={{flex: 1}}>
                 <SearchBar
+                    textColor={'white'}
+                    backgroundColor={colors.blue_bar}
                     style={{position: 'static'}}
                     handleChangeText={this.handleChangeText}
                     showOnLoad
                     hideBack
+                    iOSHideShadowd
                 />
 
                 <TabViewAnimated

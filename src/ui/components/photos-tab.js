@@ -1,8 +1,9 @@
-import {FlatList, ImageBackground, View} from "react-native";
+import {FlatList, ImageBackground, TouchableOpacity, View} from "react-native";
 import * as Constants from "../../utils/constants";
 import {connect} from "react-redux";
 import React from 'react';
 import {Card} from "native-base";
+import NavigatorService from "../../utils/navigation-service";
 
 class PhotosTabRoute extends React.Component {
 
@@ -21,10 +22,17 @@ class PhotosTabRoute extends React.Component {
                         marginTop: 8,
                         marginRight: 16
                     }}>
-                        <ImageBackground
-                            style={{flex: 1, flexDirection: 'row'}}
-                            source={{uri: Constants.getPhotoUrl(item.item)}}
-                        />
+                        <TouchableOpacity
+                            style={{flex: 1}}
+                            onPress={() => {
+                                NavigatorService.navigate('PhotoDetailsPage', {uri: Constants.getPhotoUrl(item.item)});
+                            }}
+                        >
+                            <ImageBackground
+                                style={{flex: 1}}
+                                source={{uri: Constants.getPhotoUrl(item.item)}}
+                            />
+                        </TouchableOpacity>
                     </Card>
                 }}
                 keyExtractor={(item, index) => {

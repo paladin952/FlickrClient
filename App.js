@@ -9,22 +9,31 @@ import MainPage from "./src/ui/pages/main-page";
 import {StackNavigator} from "react-navigation";
 import {Provider} from "react-redux";
 import store from "./src/redux/store";
+import PhotoDetailsPage from "./src/ui/pages/photo-details-page";
+import NavigatorService from "./src/utils/navigation-service";
 
 
 console.disableYellowBox = true;
 
 const StackNav = StackNavigator({
     MainPage: {
-        screen: MainPage
+        screen: MainPage,
+        navigationOptions: {
+            header: null
+        }
     },
-}, {
-    headerMode: 'none'
+    PhotoDetailsPage: {
+        screen: PhotoDetailsPage
+    }
 });
 
 
 const App = () => (
     <Provider store={store}>
-        <StackNav/>
+        <StackNav
+            ref={navigatorRef => {
+                NavigatorService.setContainer(navigatorRef);
+            }}/>
     </Provider>
 );
 
