@@ -13,6 +13,18 @@ class GroupTab extends React.Component {
             return <ActivityIndicator size={'large'} style={{flex: 1, alignSelf: 'center'}}/>
         }
 
+        if (this.props.networkError) {
+            return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>{Strings.t('network_error')}</Text>
+            </View>
+        }
+
+        if (this.props.genericError) {
+            return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>{Strings.t('generic_error')}</Text>
+            </View>
+        }
+
         if (this.props.groups.length === 0) {
             return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <Text>{Strings.t('empty_data')}</Text>
@@ -97,6 +109,8 @@ const mapStateToProps = state => {
         loading: state.ui.loading,
         groups: state.group.groups,
         isLoadingMore: state.ui.isLoadingMore,
+        networkError: state.ui.networkError,
+        genericError: state.ui.genericError
     }
 };
 const mapDispatchToProps = dispatch => {

@@ -13,12 +13,24 @@ class PhotosTabRoute extends React.Component {
         if (this.props.loading) {
             return <ActivityIndicator size={'large'} style={{alignSelf: 'center'}}/>
         }
+        if (this.props.networkError) {
+            return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>{Strings.t('network_error')}</Text>
+            </View>
+        }
+
+        if (this.props.genericError) {
+            return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>{Strings.t('generic_error')}</Text>
+            </View>
+        }
 
         if (this.props.photos.length === 0) {
             return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <Text>{Strings.t('empty_data')}</Text>
             </View>
         }
+
 
         return <View style={{flex: 1}}>
             <FlatList
@@ -74,6 +86,8 @@ const mapStateToProps = state => {
         loading: state.ui.loading,
         photos: state.photo.photos,
         isLoadingMore: state.ui.isLoadingMore,
+        networkError: state.ui.networkError,
+        genericError: state.ui.genericError
     }
 };
 const mapDispatchToProps = dispatch => {

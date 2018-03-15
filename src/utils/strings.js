@@ -8,6 +8,8 @@ I18n.translations = {
         members: 'members',
         member: 'member',
         empty_data: 'There is no data',
+        network_error: 'Check your internet connection and try again!',
+        generic_error: 'Something went wrong. Try again!',
     }
 };
 
