@@ -4,6 +4,7 @@
  * @flow
  */
 
+'use strict';
 import React, {Component} from 'react';
 import MainPage from "./src/ui/pages/main-page";
 import {StackNavigator} from "react-navigation";
