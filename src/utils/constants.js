@@ -13,3 +13,7 @@ export const getSeachPhotoUrl = (searchText, page) => {
 export const getSearchGroupUrl = (group, page) => {
     return `${SERVER_API}&method=flickr.groups.search&text=${group}&page=${page}`
 };
+
+
+export const TAB_INDEX_PHOTOS = 0;
+export const TAB_INDEX_GROUPS = 1;
