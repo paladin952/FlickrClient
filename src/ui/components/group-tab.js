@@ -95,7 +95,7 @@ class GroupTab extends React.Component {
 const mapStateToProps = state => {
     return {
         loading: state.ui.loading,
-        groups: state.data.groups,
+        groups: state.group.groups,
         isLoadingMore: state.ui.isLoadingMore,
     }
 };

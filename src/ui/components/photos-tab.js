@@ -72,7 +72,7 @@ class PhotosTabRoute extends React.Component {
 const mapStateToProps = state => {
     return {
         loading: state.ui.loading,
-        photos: state.data.photos,
+        photos: state.photo.photos,
         isLoadingMore: state.ui.isLoadingMore,
     }
 };

@@ -19,18 +19,16 @@ const uiMiddleware = ({dispatch, getState}) => next => action => {
 
     if (type === actions.LOAD_MORE_PHOTOS) {
         //skip if multiple times or empty data
-        if (!getState().ui.isLoadingMore && getState().data.photos.length > 0) {
-            let data = getState().data;
-            dispatch(dataActions.fetchPhotos(data.searchText, data.photosCurrentPage + 1));
+        if (!getState().ui.isLoadingMore && getState().photo.photos.length > 0) {
+            dispatch(dataActions.fetchPhotos(getState().ui.searchText, getState().photo.photosCurrentPage + 1));
             dispatch(dataActions.incrementPhotosPage())
         }
     }
 
     if (type === actions.LOAD_MORE_GROUPS) {
         //skip if multiple times or empty data
-        if (!getState().ui.isLoadingMore && getState().data.groups.length > 0) {
-            let data = getState().data;
-            dispatch(dataActions.fetchGroups(data.searchText, data.groupsCurrentPage + 1));
+        if (!getState().ui.isLoadingMore && getState().group.groups.length > 0) {
+            dispatch(dataActions.fetchGroups(getState().ui.searchText, getState().group.groupsCurrentPage + 1));
             dispatch(dataActions.incrementGroupsPage())
         }
     }
