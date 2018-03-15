@@ -5,7 +5,6 @@ import * as uiActions from "../../redux/actions/ui";
 import SearchBar from 'react-native-searchbar';
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import PhotosTabRoute from '../components/photos-tab'
-import PeopleTab from '../components/people-tab'
 import GroupTab from '../components/group-tab'
 import Strings from '../../utils/strings'
 import {Header} from 'react-navigation';
@@ -22,8 +21,7 @@ class MainPage extends React.Component {
         index: 0,
         routes: [
             {key: 'first', title: Strings.t('tab_photos')},
-            {key: 'second', title: Strings.t('tab_people')},
-            {key: 'third', title: Strings.t('tab_groups')},
+            {key: 'second', title: Strings.t('tab_groups')},
         ],
     };
 
@@ -46,7 +44,6 @@ class MainPage extends React.Component {
 
     renderScene = SceneMap({
         first: PhotosTabRoute,
-        second: PeopleTab,
         third: GroupTab
     });
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Image, View} from "react-native";
-import {Button, Text} from "native-base";
 
 
 const PhotoDetailsPage = (props) => {
