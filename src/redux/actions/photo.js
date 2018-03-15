@@ -10,6 +10,7 @@ export const fetchPhotos = (input, page = 1) => ({
         page: page,
         success: (data) => {
             if (page > 1) {
+                //TODO check if any data otherwise show message
                 return setMorePhotos(data);
             } else {
                 return [setPhotos(data), resetPhotosPage()]
