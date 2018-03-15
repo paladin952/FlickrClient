@@ -1,7 +1,7 @@
 import * as actions from "../consts/action-types";
 
 let initialState = {
-    loading: true,
+    loading: false,
     genericError: false,
     networkError: false,
     searchText: '',

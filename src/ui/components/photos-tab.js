@@ -1,4 +1,4 @@
-import {FlatList, ImageBackground, TouchableOpacity, View} from "react-native";
+import {ActivityIndicator, FlatList, ImageBackground, TouchableOpacity, View} from "react-native";
 import * as Constants from "../../utils/constants";
 import {connect} from "react-redux";
 import React from 'react';
@@ -8,6 +8,10 @@ import NavigatorService from "../../utils/navigation-service";
 class PhotosTabRoute extends React.Component {
 
     render() {
+        if (this.props.loading) {
+            return <ActivityIndicator size={'large'} style={{alignSelf: 'center'}}/>
+        }
+
         return <View style={{flex: 1}}>
             <FlatList
                 style={{flex: 1}}
@@ -46,6 +50,7 @@ class PhotosTabRoute extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        loading: state.ui.loading,
         photos: state.photos.photos
     }
 };

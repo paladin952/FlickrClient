@@ -4,6 +4,7 @@ export const API = 'API';
 export const START_NETWORK = 'START_NETWORK';
 export const END_NETWORK = 'END_NETWORK';
 export const TAB_NEW_INDEX = 'TAB_NEW_INDEX';
+
 export const ON_CLEAR_SEARCH = 'ON_CLEAR_SEARCH';
 
 export const SET_PHOTOS = 'SET_PHOTOS';

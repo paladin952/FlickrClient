@@ -1,4 +1,4 @@
-import {FlatList, ImageBackground, Text, TouchableOpacity, View} from "react-native";
+import {ActivityIndicator, FlatList, ImageBackground, Text, TouchableOpacity, View} from "react-native";
 import * as Constants from "../../utils/constants";
 import {connect} from "react-redux";
 import React from 'react';
@@ -8,8 +8,11 @@ import Strings from "../../utils/strings";
 class GroupTab extends React.Component {
 
     render() {
+        if (this.props.loading) {
+            return <ActivityIndicator size={'large'} style={{flex: 1, alignSelf: 'center'}}/>
+        }
+
         return <View style={{flex: 1}}>
-            {/*<Text>{JSON.stringify(this.props.groups)}</Text>*/}
             <FlatList
                 style={{flex: 1}}
                 data={this.props.groups}

@@ -6,9 +6,9 @@ const PhotoDetailsPage = (props) => {
     let uri = props.navigation.state.params.uri;
     let title = props.navigation.state.params.title;
     return <View style={{flex: 1}}>
-        <Image style={{flex: 1}} source={{uri: uri}} resizeMode={'contain'}/>
+        <Image style={{flex: 1}} source={{uri: uri}} resizeMode={'cover'}/>
 
-        <Text style={{position: 'absolute', bottom: 16, alignSelf: 'center', fontWeight: 'bold', fontSize: 22, textAlign: 'center', padding: 16}}>
+        <Text style={{position: 'absolute', bottom: 16, alignSelf: 'center', fontWeight: 'bold', fontSize: 24, textAlign: 'center', padding: 16, color: 'black'}}>
             {title}
         </Text>
     </View>

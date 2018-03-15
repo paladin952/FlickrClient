@@ -12,7 +12,7 @@ const photosReducer = (state = initialData, action) => {
             return {...state, groups: action.payload.groups.group};
 
         case actions.ON_CLEAR_SEARCH:
-            return {...state, photos: [], people: [], groups: []};
+            return {...state, photos: [], groups: []};
 
         default:
             return state;
