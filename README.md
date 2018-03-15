@@ -20,6 +20,8 @@ Simple React Native + Redux app using flickr.com API to retrive some photos and 
 ![alt text](public/i3.png)
 
 #Libraries
+
+
 react-redux: used for storing data and decoupling ui from business logic(side effect)
 
 react-navigation: used for creating the stack of screens and navigation between them
