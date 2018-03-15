@@ -57,7 +57,7 @@ class MainPage extends React.Component {
                     handleChangeText={this.handleChangeText}
                     showOnLoad
                     hideBack
-                    iOSHideShadowd
+                    iOSHideShadow
                 />
 
                 <TabViewAnimated
