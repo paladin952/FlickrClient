@@ -6,7 +6,8 @@ I18n.translations = {
         tab_photos: 'PHOTOS',
         tab_groups: 'GROUPS',
         members: 'members',
-        member: 'member'
+        member: 'member',
+        empty_data: 'There is no data',
     }
 };
 

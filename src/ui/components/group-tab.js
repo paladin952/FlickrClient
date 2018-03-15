@@ -4,12 +4,19 @@ import {connect} from "react-redux";
 import React from 'react';
 import {Card, Container, Content, Header} from "native-base";
 import Strings from "../../utils/strings";
+import * as uiActions from "../../redux/actions/data";
 
 class GroupTab extends React.Component {
 
     render() {
         if (this.props.loading) {
             return <ActivityIndicator size={'large'} style={{flex: 1, alignSelf: 'center'}}/>
+        }
+
+        if (this.props.groups.length === 0) {
+            return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>{Strings.t('empty_data')}</Text>
+            </View>
         }
 
         return <View style={{flex: 1}}>
@@ -64,6 +71,21 @@ class GroupTab extends React.Component {
                 keyExtractor={(item, index) => {
                     return item.nsid;
                 }}
+                ListFooterComponent={() => {
+                    return (
+                        this.props.isLoadingMore
+                            ? <View key={'indicator'}
+                                    style={{flex: 1, padding: 10}}
+                            >
+                                <ActivityIndicator size="small"/>
+                            </View>
+                            : null
+                    );
+                }}
+                onEndReached={() => {
+                    this.props.loadMore();
+                    console.log('luci', "ON END REACHED GROUP");
+                }}
             />
         </View>
     }
@@ -72,10 +94,14 @@ class GroupTab extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        groups: state.data.groups
+        loading: state.ui.loading,
+        groups: state.data.groups,
+        isLoadingMore: state.ui.isLoadingMore,
     }
 };
 const mapDispatchToProps = dispatch => {
-    return {}
+    return {
+        loadMore: () => dispatch(uiActions.loadMoreGroups())
+    }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(GroupTab);

@@ -11,7 +11,7 @@ const photosReducer = (state = initialData, action) => {
             return {...state, groups: action.payload.groups.group};
 
         case actions.ON_CLEAR_SEARCH:
-            return {...state, photos: [], groups: []};
+            return {...state, photos: [], groups: [], photosCurrentPage: 1, groupsCurrentPage: 1};
 
         case actions.INCREMENT_PHOTOS_PAGE:
             return {...state, photosCurrentPage: state.photosCurrentPage + 1};
@@ -23,7 +23,7 @@ const photosReducer = (state = initialData, action) => {
             return {...state, photos: state.photos.concat(action.payload.photos.photo)};
 
         case actions.SET_MORE_GROUPS:
-            return {...state, groups: [...state.groups, action.payload.groups.group]};
+            return {...state, groups: state.groups.concat(action.payload.groups.group)};
 
         case actions.RESET_PHOTOS_PAGE:
             return {...state, photosCurrentPage: 1};
