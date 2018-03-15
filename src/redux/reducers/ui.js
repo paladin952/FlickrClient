@@ -32,7 +32,6 @@ const uiReducer = (state = initialState, action) => {
             return {...state, searchText: action.payload};
 
         case actions.TAB_NEW_INDEX:
-            console.log("set tab index", action.payload);
             return {...state, currentTabIndex: action.payload};
 
 

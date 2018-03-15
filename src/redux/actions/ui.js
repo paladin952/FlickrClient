@@ -41,3 +41,7 @@ export const onTabChanged = (newIndex) => ({
     type: actions.TAB_NEW_INDEX,
     payload: newIndex
 });
+
+export const onClearSearch = () => ({
+   type: actions.ON_CLEAR_SEARCH,
+});

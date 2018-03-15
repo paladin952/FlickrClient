@@ -2,6 +2,7 @@ import {FlatList, ImageBackground, View} from "react-native";
 import * as Constants from "../../utils/constants";
 import {connect} from "react-redux";
 import React from 'react';
+import {Card} from "native-base";
 
 class PhotosTabRoute extends React.Component {
 
@@ -11,15 +12,23 @@ class PhotosTabRoute extends React.Component {
                 style={{flex: 1}}
                 data={this.props.photos}
                 renderItem={(item) => {
-                    return <View style={{borderBottomColor: 'black', borderBottomWidth: 1, height: 250, paddingLeft: 16, paddingRight: 16}}>
+                    return <Card style={{
+                        borderBottomColor: 'black',
+                        borderBottomWidth: 1,
+                        height: 250,
+                        marginLeft: 16,
+                        marginBottom: 8,
+                        marginTop: 8,
+                        marginRight: 16
+                    }}>
                         <ImageBackground
                             style={{flex: 1, flexDirection: 'row'}}
                             source={{uri: Constants.getPhotoUrl(item.item)}}
                         />
-                    </View>
+                    </Card>
                 }}
                 keyExtractor={(item, index) => {
-                    return index;
+                    return item.id;
                 }}
             />
         </View>

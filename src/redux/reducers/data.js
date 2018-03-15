@@ -14,6 +14,9 @@ const photosReducer = (state = initialData, action) => {
         case actions.SET_GROUPS:
             return {...state, groups: action.payload.groups.group};
 
+        case actions.ON_CLEAR_SEARCH:
+            return {...state, photos: [], people: [], groups: []};
+
         default:
             return state;
     }

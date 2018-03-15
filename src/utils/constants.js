@@ -6,12 +6,8 @@ export const getPhotoUrl = (image) => {
     return `https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.secret}.jpg`;
 };
 
-export const getGroupPhotoUrl = (group) => {
-
-};
-
 export const getSeachPhotoUrl = (searchText) => {
-    return `${SERVER_API}&method=flickr.photos.search&text=${searchText}&per_page=1000&page=1`;
+    return `${SERVER_API}&method=flickr.photos.search&text=${searchText}`;
 };
 
 export const  getSearchPeopleUrl = (username) => {
