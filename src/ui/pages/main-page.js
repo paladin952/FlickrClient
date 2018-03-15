@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, ImageBackground, Text, View, StyleSheet, Dimensions} from "react-native";
+import {View, StyleSheet, Dimensions} from "react-native";
 import {connect} from "react-redux";
 import * as uiActions from "../../redux/actions/ui";
 import SearchBar from 'react-native-searchbar';
@@ -40,7 +40,7 @@ class MainPage extends React.Component {
         this.props.onTabChanged(index);
     };
 
-    renderHeader = props => <TabBar style={{backgroundColor: colors.blue_bar}}{...props} />;
+    renderHeader = props => <TabBar style={styles.tab}{...props} />;
 
     renderScene = SceneMap({
         first: PhotosTabRoute,
@@ -53,7 +53,6 @@ class MainPage extends React.Component {
                 <SearchBar
                     textColor={'white'}
                     backgroundColor={colors.blue_bar}
-                    style={{position: 'static'}}
                     handleChangeText={this.handleChangeText}
                     showOnLoad
                     hideBack
@@ -78,6 +77,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: Header.HEIGHT
+    },
+    tab: {
+        backgroundColor: colors.blue_bar
     },
 });
 

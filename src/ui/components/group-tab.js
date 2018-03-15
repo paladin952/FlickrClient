@@ -1,10 +1,10 @@
-import {ActivityIndicator, FlatList, ImageBackground, Text, TouchableOpacity, View} from "react-native";
-import * as Constants from "../../utils/constants";
+import {ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {connect} from "react-redux";
 import React from 'react';
-import {Card, Container, Content, Header} from "native-base";
+import {Card} from "native-base";
 import Strings from "../../utils/strings";
 import * as uiActions from "../../redux/actions/data";
+import colors from "../../utils/colors";
 
 class GroupTab extends React.Component {
 
@@ -14,19 +14,19 @@ class GroupTab extends React.Component {
         }
 
         if (this.props.networkError) {
-            return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            return <View style={styles.errorContainer}>
                 <Text>{Strings.t('network_error')}</Text>
             </View>
         }
 
         if (this.props.genericError) {
-            return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            return <View style={styles.errorContainer}>
                 <Text>{Strings.t('generic_error')}</Text>
             </View>
         }
 
         if (this.props.groups.length === 0) {
-            return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            return <View style={styles.errorContainer}>
                 <Text>{Strings.t('empty_data')}</Text>
             </View>
         }
@@ -37,42 +37,21 @@ class GroupTab extends React.Component {
                 data={this.props.groups}
                 renderItem={(item) => {
                     return (
-                        <Card style={{
-                            elevation: 1,
-                            minHeight: 75,
-                            paddingLeft: 16,
-                            paddingTop: 8,
-                            paddingBottom: 8,
-                            paddingRight: 16,
-                        }}
+                        <Card style={styles.cardContainer}
                         >
                             <TouchableOpacity
-                                style={{
-                                    flex: 1,
-                                    justifyContent: 'center',
-                                    alignItems: 'center'
-                                }}
+                                style={styles.touchContainer}
                                 onPress={() => {
                                 }}
                             >
                                 <Text
-                                    style={{
-                                        textAlign: 'center',
-                                        fontWeight: 'bold',
-                                        fontSize: 18,
-                                        color: '#333333'
-                                    }}
+                                    style={styles.title}
                                 >
                                     {item.item.name}
                                 </Text>
 
                                 <Text
-                                    style={{
-                                        textAlign: 'center',
-                                        fontWeight: 'bold',
-                                        fontSize: 12,
-                                        color: '#333333'
-                                    }}
+                                    style={styles.subtitle}
                                 >
                                     {item.item.members} {item.item.members > 1 ? Strings.t('members') : Strings.t('member')}
                                 </Text>
@@ -87,7 +66,7 @@ class GroupTab extends React.Component {
                     return (
                         this.props.isLoadingMore
                             ? <View key={'indicator'}
-                                    style={{flex: 1, padding: 10}}
+                                    style={styles.loadingContainer}
                             >
                                 <ActivityIndicator size="small"/>
                             </View>
@@ -103,6 +82,49 @@ class GroupTab extends React.Component {
     }
 }
 
+const styles = StyleSheet.create({
+    title: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 18,
+        color: colors.textGray
+    },
+    subtitle: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 12,
+        color: colors.textGray
+    },
+    errorContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    root: {
+        flex: 1
+    },
+    list: {
+        flex: 1,
+    },
+    loadingContainer: {
+        flex: 1,
+        padding: 10
+    },
+    imageBackground: {
+        flex: 1,
+    },
+    touchContainer: {
+        flex: 1
+    },
+    cardContainer: {
+        elevation: 1,
+        minHeight: 75,
+        paddingLeft: 16,
+        paddingTop: 8,
+        paddingBottom: 8,
+        paddingRight: 16,
+    }
+});
 
 const mapStateToProps = state => {
     return {
