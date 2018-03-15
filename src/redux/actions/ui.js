@@ -35,5 +35,9 @@ export const onSearch = (input) => ({
     meta: {
         debounce: 500
     }
+});
 
+export const onTabChanged = (newIndex) => ({
+    type: actions.TAB_NEW_INDEX,
+    payload: newIndex
 });

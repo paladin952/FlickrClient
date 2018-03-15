@@ -3,25 +3,26 @@ import {FlatList, ImageBackground, Text, View, StyleSheet, Dimensions} from "rea
 import {connect} from "react-redux";
 import * as uiActions from "../../redux/actions/ui";
 import SearchBar from 'react-native-searchbar';
-import * as Constants from "../../utils/constants";
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
+import PhotosTabRoute from '../components/photos-tab'
+import PeopleTab from '../components/people-tab'
+import GroupTab from '../components/group-tab'
+import Strings from '../../utils/strings'
+import { Header } from 'react-navigation';
 
 const initialLayout = {
     height: 0,
     width: Dimensions.get('window').width,
 };
-const PhotosRoute = () => <View style={[ styles.container, { backgroundColor: '#ff4081' } ]} />;
-const PeopleRoute = () => <View style={[ styles.container, { backgroundColor: '#673ab7' } ]} />;
-const GroupsRoute = () => <View style={[ styles.container, { backgroundColor: '#FFFFB0' } ]} />;
 
 class MainPage extends React.Component {
 
     state = {
         index: 0,
         routes: [
-            { key: 'first', title: 'First' },
-            { key: 'second', title: 'Second' },
-            { key: 'third', title: 'third' },
+            {key: 'first', title: Strings.t('tab_photos')},
+            {key: 'second', title: Strings.t('tab_people')},
+            {key: 'third', title: Strings.t('tab_groups')},
         ],
     };
 
@@ -33,20 +34,26 @@ class MainPage extends React.Component {
         this.props.onSearch(input);
     };
 
-    _handleIndexChange = index => this.setState({ index });
+    handleIndexChange = index => {
+        this.setState({
+            index: index
+        });
+        this.props.onTabChanged(index);
+    };
 
-    _renderHeader = props => <TabBar {...props} />;
+    renderHeader = props => <TabBar {...props} />;
 
-    _renderScene = SceneMap({
-        first: PhotosRoute,
-        second: PeopleRoute,
-        third: GroupsRoute
+    renderScene = SceneMap({
+        first: PhotosTabRoute,
+        second: PeopleTab,
+        third: GroupTab
     });
 
     render() {
         return (
             <View style={{flex: 1}}>
                 <SearchBar
+                    style={{position: 'static'}}
                     handleChangeText={this.handleChangeText}
                     showOnLoad
                     hideBack
@@ -55,28 +62,11 @@ class MainPage extends React.Component {
                 <TabViewAnimated
                     style={styles.container}
                     navigationState={this.state}
-                    renderScene={this._renderScene}
-                    renderHeader={this._renderHeader}
-                    onIndexChange={this._handleIndexChange}
+                    renderScene={this.renderScene}
+                    renderHeader={this.renderHeader}
+                    onIndexChange={this.handleIndexChange}
                     initialLayout={initialLayout}
                 />
-
-                {/*<FlatList*/}
-                    {/*style={{flex: 1, marginTop: 100}}*/}
-                    {/*data={this.props.photos}*/}
-                    {/*renderItem={(item) => {*/}
-                        {/*return <View style={{borderBottomColor: 'black', borderBottomWidth: 1, height: 250, paddingLeft: 4, paddingBottom: 4, paddingRight: 4}}>*/}
-                            {/*<ImageBackground*/}
-                                {/*style={{flex: 1, flexDirection: 'row'}}*/}
-                                {/*source={{uri: Constants.getPhotoUrl(item.item)}}*/}
-                            {/*/>*/}
-                        {/*</View>*/}
-                    {/*}}*/}
-                    {/*keyExtractor={(item, index) => {*/}
-                        {/*return index;*/}
-                    {/*}}*/}
-
-                {/*/>*/}
             </View>
         )
     }
@@ -85,14 +75,14 @@ class MainPage extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 100,
         flex: 1,
+        marginTop: Header.HEIGHT
     },
 });
 
 const mapStateToProps = state => {
     return {
-        photos: state.photos.photos
+        photos: state.photos.photos,
     }
 };
 
@@ -100,6 +90,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onMount: () => dispatch(uiActions.onMount('MainPage')),
         onSearch: (input) => dispatch(uiActions.onSearch(input)),
+        onTabChanged: (input) => dispatch(uiActions.onTabChanged(input)),
     };
 };
 

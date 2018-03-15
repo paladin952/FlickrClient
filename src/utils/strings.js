@@ -3,7 +3,11 @@ import I18n from 'react-native-i18n';
 
 I18n.translations = {
     en: {
-
+        tab_photos: 'PHOTOS',
+        tab_people: 'PEOPLE',
+        tab_groups: 'GROUPS',
+        members: 'members',
+        member: 'member'
     }
 };
 
