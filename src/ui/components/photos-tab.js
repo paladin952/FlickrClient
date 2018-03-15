@@ -6,6 +6,7 @@ import {Card} from "native-base";
 import NavigatorService from "../../utils/navigation-service";
 import * as dataActions from "../../redux/actions/data";
 import Strings from '../../utils/strings';
+import * as photosActions from "../../redux/actions/photo";
 
 class PhotosTabRoute extends React.Component {
 
@@ -115,7 +116,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        loadMorePhotos: () => dispatch(dataActions.loadMorePhotos())
+        loadMorePhotos: () => dispatch(photosActions.loadMorePhotos())
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(PhotosTabRoute);

@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 import React from 'react';
 import {Card} from "native-base";
 import Strings from "../../utils/strings";
-import * as uiActions from "../../redux/actions/data";
 import colors from "../../utils/colors";
+import * as groupsActions from "../../redux/actions/group";
 
 class GroupTab extends React.Component {
 
@@ -137,7 +137,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        loadMore: () => dispatch(uiActions.loadMoreGroups())
+        loadMore: () => dispatch(groupsActions.loadMoreGroups())
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(GroupTab);
