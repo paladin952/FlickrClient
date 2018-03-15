@@ -25,7 +25,7 @@ class PhotosTabRoute extends React.Component {
                         <TouchableOpacity
                             style={{flex: 1}}
                             onPress={() => {
-                                NavigatorService.navigate('PhotoDetailsPage', {uri: Constants.getPhotoUrl(item.item)});
+                                NavigatorService.navigate('PhotoDetailsPage', {uri: Constants.getPhotoUrl(item.item), title: item.item.title});
                             }}
                         >
                             <ImageBackground
