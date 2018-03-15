@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import React from 'react';
 import {Card} from "native-base";
 import NavigatorService from "../../utils/navigation-service";
-import * as dataActions from "../../redux/actions/data";
 import Strings from '../../utils/strings';
 import * as photosActions from "../../redux/actions/photo";
 
