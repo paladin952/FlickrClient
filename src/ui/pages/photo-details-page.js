@@ -8,9 +8,25 @@ const PhotoDetailsPage = (props) => {
     return <View style={{flex: 1}}>
         <Image style={{flex: 1}} source={{uri: uri}} resizeMode={'cover'}/>
 
-        <Text style={{position: 'absolute', bottom: 16, alignSelf: 'center', fontWeight: 'bold', fontSize: 24, textAlign: 'center', padding: 16, color: 'black'}}>
-            {title}
-        </Text>
+        <View
+            style={{
+                borderRadius: 16,
+                backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                position: 'absolute',
+                bottom: 16,
+                alignSelf: 'center'
+            }}
+        >
+            <Text style={{
+                fontWeight: 'bold',
+                fontSize: 24,
+                textAlign: 'center',
+                padding: 4,
+                color: 'black'
+            }}>
+                {title}
+            </Text>
+        </View>
     </View>
 };
 
