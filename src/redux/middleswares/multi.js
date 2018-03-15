@@ -1,4 +1,5 @@
 
+//allowing to dispatch a list of messages one by one
 const multi = ({ dispatch }) => next => action => {
     if (!Array.isArray(action)) {
         return next(action);
