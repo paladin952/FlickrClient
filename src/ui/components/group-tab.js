@@ -72,7 +72,7 @@ class GroupTab extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        groups: state.photos.groups
+        groups: state.data.groups
     }
 };
 const mapDispatchToProps = dispatch => {

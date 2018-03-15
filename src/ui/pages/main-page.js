@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     return {
-        photos: state.photos.photos,
+        photos: state.data.photos,
     }
 };
 

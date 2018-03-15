@@ -4,11 +4,25 @@ export const API = 'API';
 export const START_NETWORK = 'START_NETWORK';
 export const END_NETWORK = 'END_NETWORK';
 export const TAB_NEW_INDEX = 'TAB_NEW_INDEX';
-
 export const ON_CLEAR_SEARCH = 'ON_CLEAR_SEARCH';
 
 export const SET_PHOTOS = 'SET_PHOTOS';
+export const SET_MORE_PHOTOS = 'SET_MORE_PHOTOS';
 export const SET_GROUPS = 'SET_GROUPS';
+export const SET_MORE_GROUPS = 'SET_MORE_GROUPS';
+
+
+export const INCREMENT_PHOTOS_PAGE = 'INCREMENT_PHOTOS_PAGE';
+export const RESET_PHOTOS_PAGE = 'RESET_PHOTOS_PAGE';
+
+export const INCREMENT_GROUPS_PAGE = 'INCREMENT_GROUPS_PAGE';
+export const RESET_GROUPS_PAGE = 'RESET_GROUPS_PAGE';
+
+
+export const SHOW_LOAD_MORE = 'SHOW_LOAD_MORE';
+export const HIDE_LOAD_MORE = 'HIDE_LOAD_MORE';
+export const LOAD_MORE_PHOTOS = 'LOAD_MORE_PHOTOS';
+export const LOAD_MORE_GROUPS = 'LOAD_MORE_GROUPS';
 
 
 export const SHOW_GENERIC_ERROR = 'GENERIC_ERROR';

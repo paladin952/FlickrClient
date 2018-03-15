@@ -1,7 +1,7 @@
 import React from 'react';
 import * as actions from "../consts/action-types";
 import axios from "axios";
-import {endNetwork, hideGenericError, hideNetworkError, startNetwork} from "../actions/ui";
+import {endNetwork, hideGenericError, hideLoadMore, hideNetworkError, showLoadMore, startNetwork} from "../actions/ui";
 
 const api = ({dispatch, getState}) => next => action => {
 
@@ -9,8 +9,12 @@ const api = ({dispatch, getState}) => next => action => {
         return next(action);
     }
 
-    const {url, success, failure, method, data} = action.payload;
-    dispatch(startNetwork());
+    const {url, success, failure, method, data, page} = action.payload;
+    if (page > 1) {
+        dispatch(showLoadMore());
+    } else {
+        dispatch(startNetwork());
+    }
     dispatch(hideGenericError());
     dispatch(hideNetworkError());
     axios({
@@ -22,9 +26,11 @@ const api = ({dispatch, getState}) => next => action => {
         .then(data => {
             dispatch(success(data));
             dispatch(endNetwork());
+            dispatch(hideLoadMore());
         })
         .catch(err => {
             dispatch(failure(err));
+            dispatch(hideLoadMore());
             dispatch(endNetwork());
         })
 

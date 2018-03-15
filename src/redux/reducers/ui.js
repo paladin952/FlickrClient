@@ -6,6 +6,7 @@ let initialState = {
     networkError: false,
     searchText: '',
     currentTabIndex: 0,
+    isLoadingMore: false,
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -34,6 +35,11 @@ const uiReducer = (state = initialState, action) => {
         case actions.TAB_NEW_INDEX:
             return {...state, currentTabIndex: action.payload};
 
+        case actions.SHOW_LOAD_MORE:
+            return {...state, isLoadingMore: true};
+
+        case actions.HIDE_LOAD_MORE:
+            return {...state, isLoadingMore: false};
 
         default:
             return state;

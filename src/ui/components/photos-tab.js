@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import React from 'react';
 import {Card} from "native-base";
 import NavigatorService from "../../utils/navigation-service";
+import * as dataActions from "../../redux/actions/data";
 
 class PhotosTabRoute extends React.Component {
 
@@ -42,6 +43,19 @@ class PhotosTabRoute extends React.Component {
                 keyExtractor={(item, index) => {
                     return item.id;
                 }}
+                ListFooterComponent={() => {
+                    return (
+                        this.props.isLoadingMore
+                            ? <View style={{flex: 1, padding: 10}}>
+                                <ActivityIndicator size="small"/>
+                            </View>
+                            : null
+                    );
+                }}
+                onEndReached={() => {
+                    this.props.loadMorePhotos();
+                    console.log('luci', "ON END REACHED");
+                }}
             />
         </View>
     }
@@ -51,10 +65,13 @@ class PhotosTabRoute extends React.Component {
 const mapStateToProps = state => {
     return {
         loading: state.ui.loading,
-        photos: state.photos.photos
+        photos: state.data.photos,
+        isLoadingMore: state.ui.isLoadingMore,
     }
 };
 const mapDispatchToProps = dispatch => {
-    return {}
+    return {
+        loadMorePhotos: () => dispatch(dataActions.loadMorePhotos())
+    }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(PhotosTabRoute);

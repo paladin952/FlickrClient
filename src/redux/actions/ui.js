@@ -24,6 +24,14 @@ export const hideNetworkError = () => ({
     type: actions.HIDE_NETWORK_ERROR,
 });
 
+export const showLoadMore = () => ({
+    type: actions.SHOW_LOAD_MORE,
+});
+
+export const hideLoadMore = () => ({
+    type: actions.HIDE_LOAD_MORE,
+});
+
 export const onMount = (page) => ({
     type: actions.PAGE_MOUNTED,
     payload: page
