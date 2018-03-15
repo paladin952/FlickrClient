@@ -19,8 +19,7 @@ Simple React Native + Redux app using flickr.com API to retrive some photos and 
 ![alt text](public/i2.png)
 ![alt text](public/i3.png)
 
-#Libraries
-
+# Libraries
 
 react-redux: used for storing data and decoupling ui from business logic(side effect)
 
