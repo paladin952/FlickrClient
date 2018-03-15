@@ -21,24 +21,6 @@ export const fetchPhotos = (input) => ({
     },
 });
 
-export const fetchPeople = (input) => ({
-    type: actions.API,
-    payload: {
-        url: Constants.getSearchPeopleUrl(input),
-        method: 'GET',
-        success: (data) => {
-            return setPeople(data)
-        },
-        failure: (err) => {
-            if (!err.status) {
-                return showNetworkError();
-            } else {
-                return showGenericError()
-            }
-        }
-    },
-});
-
 export const fetchGroups = (input) => ({
     type: actions.API,
     payload: {
@@ -61,8 +43,6 @@ export const fetchData = (currentTabIndex, input) => {
     if (currentTabIndex === 0) {
         return fetchPhotos(input)
     } else if (currentTabIndex === 1) {
-        return fetchPeople(input)
-    } else {
         return fetchGroups(input)
     }
 };
@@ -72,11 +52,6 @@ export const setPhotos = (photos) => ({
     payload: photos
 });
 
-
-export const setPeople = (people) => ({
-    type: actions.SET_PEOPLE,
-    payload: people
-});
 
 export const setGroups = (groups) => ({
     type: actions.SET_GROUPS,

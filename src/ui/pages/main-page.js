@@ -21,7 +21,7 @@ class MainPage extends React.Component {
         index: 0,
         routes: [
             {key: 'first', title: Strings.t('tab_photos')},
-            {key: 'second', title: Strings.t('tab_groups')},
+            {key: 'second', title: Strings.t('tab_groups')}
         ],
     };
 
@@ -44,7 +44,7 @@ class MainPage extends React.Component {
 
     renderScene = SceneMap({
         first: PhotosTabRoute,
-        third: GroupTab
+        second: GroupTab
     });
 
     render() {

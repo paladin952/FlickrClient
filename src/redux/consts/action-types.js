@@ -7,7 +7,6 @@ export const TAB_NEW_INDEX = 'TAB_NEW_INDEX';
 export const ON_CLEAR_SEARCH = 'ON_CLEAR_SEARCH';
 
 export const SET_PHOTOS = 'SET_PHOTOS';
-export const SET_PEOPLE = 'SET_PEOPLE';
 export const SET_GROUPS = 'SET_GROUPS';
 
 

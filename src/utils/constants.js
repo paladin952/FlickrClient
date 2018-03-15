@@ -10,10 +10,6 @@ export const getSeachPhotoUrl = (searchText) => {
     return `${SERVER_API}&method=flickr.photos.search&text=${searchText}`;
 };
 
-export const  getSearchPeopleUrl = (username) => {
-    return `${SERVER_API}&method=flickr.people.findByUsername&username=${username}`;
-};
-
 export const getSearchGroupUrl = (group) => {
     return `${SERVER_API}&method=flickr.groups.search&text=${group}`
 };
